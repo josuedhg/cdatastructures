@@ -9,7 +9,7 @@ OBJS := array_stack.o $(TESTS_OBJS)
 	@$(CC) $(CFLAGS) -c -o $@ $^
 
 all: $(OBJS)
-	$(CC) -lcmocka -o tests $^
+	$(CC) $$(pkg-config --libs --cflags cmocka) -o tests $^
 
 .PHONY: clean
 clean:
