@@ -2,7 +2,7 @@ find_package(cmocka)
 
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
-set(c_tests tests.c) 
+set(c_tests tests.c array_stack_tests.c) 
 
 add_definitions(-DUNIT_TESTING=ON)
 
