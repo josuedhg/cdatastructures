@@ -1,0 +1,1 @@
+option(TESTS "Build unit testing" OFF)
