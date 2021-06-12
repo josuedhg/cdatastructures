@@ -41,7 +41,7 @@ char bracket_evaluate(char *text)
 				break;
 			}
 			if (c != get_close_bracket((char)array_stack_peek(stack))) {
-				missing = get_close_bracket((char)array_stack_peek(stack));
+				missing = get_open_bracket(c);
 				break;
 			}
 			array_stack_pop(stack);
