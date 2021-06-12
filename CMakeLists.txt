@@ -10,5 +10,8 @@ add_subdirectory(src)
 if(${TESTS})
 add_subdirectory(tests)
 endif(${TESTS})
+if (${SAMPLES})
+add_subdirectory(samples)
+endif(${SAMPLES})
 
 message(STATUS "TESTS " ${TESTS})
