@@ -1,4 +1,3 @@
-#include <math.h>
 #include <string.h>
 
 #include <array_stack.h>
