@@ -11,5 +11,7 @@ int main(void)
 
 	printf("infix %s = postfix %s \n", infix1, postfix1);
 	printf("infix %s = postfix %s \n", infix2, postfix2);
+	free(postfix1);
+	free(postfix2);
 	return 0;
 }
