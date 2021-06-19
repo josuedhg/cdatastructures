@@ -29,7 +29,7 @@ struct command_interface
 	pthread_mutex_t *muttex;
 };
 
-void wait_responce(struct command_interface *interface, int *result)
+void wait_response(struct command_interface *interface, int *result)
 {
 	int command = 0;
 	while (command != COMMAND_REPORT) {
@@ -64,7 +64,7 @@ void *dispatcher(void *info)
 	for (int i = 0; i < COMMANDS_LEN; i++)
 		send_command(interface, command_codes[i], command_data[i]);
 	send_command(interface, COMMAND_EXIT, 0);
-	wait_responce(interface, result);
+	wait_response(interface, result);
 
 	return result;
 }
