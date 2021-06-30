@@ -3,13 +3,13 @@ cmake_minimum_required(VERSION 3.18)
 set(c_sources
 	${CMAKE_SOURCE_DIR}/src/array_stack.c
 	${CMAKE_SOURCE_DIR}/src/array_queue.c
-	${CMAKE_SOURCE_DIR}/src/list.c
+	${CMAKE_SOURCE_DIR}/src/singly_linked_list.c
 	PARENT_SCOPE)
-set(c_headers array_stack.h array_queue.h list.h)
+set(c_headers array_stack.h array_queue.h singly_linked_list.h)
 
 add_library(array_stack SHARED array_stack.c)
 add_library(array_queue SHARED array_queue.c)
-add_library(list SHARED list.c)
+add_library(list SHARED singly_linked_list.c)
 
 set_target_properties(array_queue PROPERTIES CLEAN_DIRECT_OUTPUT 1)
 set_target_properties(array_stack PROPERTIES CLEAN_DIRECT_OUTPUT 1)
