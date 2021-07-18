@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdatomic.h>
+#include <pthread.h>
 
 #include "singly_linked_list.h"
 
