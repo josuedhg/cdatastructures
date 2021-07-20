@@ -8,6 +8,7 @@ typedef int (*search_fn)(void *data1, void *data2);
 
 /* Node operations */
 void doubly_linked_node_move_next(struct doubly_linked_node **node);
+void doubly_linked_node_move_prev(struct doubly_linked_node **node);
 void *doubly_linked_node_get_data(struct doubly_linked_node *node);
 
 /* List operations */
