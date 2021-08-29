@@ -37,5 +37,5 @@ target_link_libraries(stack_infix_eval LINK_PUBLIC array_stack)
 
 target_link_libraries(queue_buffer LINK_PUBLIC array_queue Threads::Threads)
 
-target_link_libraries(mutex LINK_PUBLIC list Threads::Threads)
-target_link_libraries(history LINK_PUBLIC dlist Threads::Threads)
+target_link_libraries(mutex LINK_PUBLIC singly_linked_list Threads::Threads)
+target_link_libraries(history LINK_PUBLIC doubly_linked_list Threads::Threads)

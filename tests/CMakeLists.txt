@@ -7,6 +7,8 @@ add_definitions(-DUNIT_TESTING=ON)
 
 add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND})
 
+file(GLOB c_sources ${CMAKE_SOURCE_DIR}/src/*.c)
+
 file(GLOB c_tests *_tests.c)
 foreach (file ${c_tests})
 	get_filename_component(test_name ${file} NAME_WE)
