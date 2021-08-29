@@ -5,7 +5,6 @@
 #include <cmocka.h>
 
 #include "array_queue.h"
-#include "array_queue_tests.h"
 
 void array_queue(void **state)
 {
@@ -56,4 +55,16 @@ void array_queue_uninitialized(void **state)
 	expect_assert_failure(array_queue_empty(queue));
 	expect_assert_failure(array_queue_pop_back(queue));
 	expect_assert_failure(array_queue_push_front(queue, NULL));
+}
+
+int main()
+{
+	const struct CMUnitTest tests[] = {
+		// array_queue tests
+		cmocka_unit_test(array_queue),
+		cmocka_unit_test(array_queue_overflow),
+		cmocka_unit_test(array_queue_underflow),
+		cmocka_unit_test(array_queue_uninitialized),
+	};
+	return cmocka_run_group_tests(tests, NULL, NULL);
 }

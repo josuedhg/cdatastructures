@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <assert.h>
+
 #include "singly_linked_list.h"
+#include "node_i.h"
 
 #ifdef UNIT_TESTING
 extern void mock_assert(const int result, const char* const expression,
@@ -10,35 +12,11 @@ extern void mock_assert(const int result, const char* const expression,
     mock_assert((int)(expression), #expression, __FILE__, __LINE__);
 #endif
 
-struct singly_linked_node {
-	void *data;
-	struct singly_linked_node *next;
-};
-
 struct singly_linked_list {
 	struct singly_linked_node *head;
 	struct singly_linked_node *tail;
 	int length;
 };
-
-void singly_linked_node_move_next(struct singly_linked_node **node)
-{
-	assert(node != NULL && *node != NULL);
-	*node = (*node)->next;
-}
-
-void *singly_linked_node_get_data(struct singly_linked_node *node)
-{
-	assert(node != NULL);
-	return node->data;
-}
-
-static struct singly_linked_node *build_singly_linked_node(void *data)
-{
-	struct singly_linked_node *node =(struct singly_linked_node *)calloc(1, sizeof(struct singly_linked_node));
-	node->data = data;
-	return node;
-}
 
 struct singly_linked_list *singly_linked_list_init()
 {

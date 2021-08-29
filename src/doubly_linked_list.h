@@ -1,15 +1,9 @@
 #ifndef __DOUBLY_LINKED_LIST__
 #define __DOUBLY_LINKED_LIST__
 
-struct doubly_linked_node;
+#include "node.h"
+
 struct doubly_linked_list;
-
-typedef int (*search_fn)(void *data1, void *data2);
-
-/* Node operations */
-void doubly_linked_node_move_next(struct doubly_linked_node **node);
-void doubly_linked_node_move_prev(struct doubly_linked_node **node);
-void *doubly_linked_node_get_data(struct doubly_linked_node *node);
 
 /* List operations */
 struct doubly_linked_list *doubly_linked_list_init(void);

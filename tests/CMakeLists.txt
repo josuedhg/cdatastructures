@@ -1,11 +1,19 @@
 find_package(cmocka)
 
+enable_testing()
+
 include_directories(${CMAKE_SOURCE_DIR}/src)
-
-set(c_tests tests.c array_stack_tests.c array_queue_tests.c singly_linked_list_tests.c doubly_linked_list_tests.c)
-
 add_definitions(-DUNIT_TESTING=ON)
 
-add_executable(tests ${c_tests} ${c_sources})
+add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND})
 
-target_link_libraries(tests cmocka)
+file(GLOB c_tests *_tests.c)
+foreach (file ${c_tests})
+	get_filename_component(test_name ${file} NAME_WE)
+	add_executable(${test_name} ${file} ${c_sources})
+
+	target_link_libraries(${test_name} cmocka)
+	add_test(NAME ${test_name}
+		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+		COMMAND ${test_name})
+endforeach()

@@ -5,7 +5,6 @@
 #include <cmocka.h>
 
 #include "singly_linked_list.h"
-#include "singly_linked_list_tests.h"
 
 struct data_obj
 {
@@ -220,4 +219,22 @@ void singly_linked_list_uninitialized(void **state)
 	expect_assert_failure(singly_linked_list_delete_nth(NULL, 0));
 	expect_assert_failure(singly_linked_list_get_nth(NULL, 3));
 	expect_assert_failure(singly_linked_list_get_size(NULL));
+}
+
+int main()
+{
+	const struct CMUnitTest tests[] = {
+		// list
+		cmocka_unit_test(singly_linked_list_append_test),
+		cmocka_unit_test(singly_linked_list_prepend_test),
+		cmocka_unit_test(singly_linked_list_insert_after_tests),
+		cmocka_unit_test(singly_linked_list_insert_after_custom_search_tests),
+		cmocka_unit_test(singly_linked_list_delete_tests),
+		cmocka_unit_test(singly_linked_list_delete_custom_search_tests),
+		cmocka_unit_test(singly_linked_list_delete_nth_tests),
+		cmocka_unit_test(singly_linked_list_get_nth_test),
+		cmocka_unit_test(singly_linked_list_size_tests),
+		cmocka_unit_test(singly_linked_list_uninitialized),
+	};
+	return cmocka_run_group_tests(tests, NULL, NULL);
 }

@@ -1,14 +1,9 @@
 #ifndef __SINGLY_LINKED_LIST_H__
 #define __SINGLY_LINKED_LIST_H__
 
+#include "node.h"
+
 struct singly_linked_list;
-struct singly_linked_node;
-
-typedef int (*search_fn)(void *data1, void *data2);
-
-/* Node operations */
-void singly_linked_node_move_next(struct singly_linked_node **node);
-void *singly_linked_node_get_data(struct singly_linked_node *node);
 
 /* List operations */
 struct singly_linked_list *singly_linked_list_init(void);

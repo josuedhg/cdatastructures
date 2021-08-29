@@ -2,6 +2,7 @@
 #include <assert.h>
 
 #include "doubly_linked_list.h"
+#include "node_i.h"
 
 #ifdef UNIT_TESTING
 extern void mock_assert(const int result, const char* const expression,
@@ -11,36 +12,11 @@ extern void mock_assert(const int result, const char* const expression,
     mock_assert((int)(expression), #expression, __FILE__, __LINE__);
 #endif
 
-struct doubly_linked_node {
-	void *data;
-	struct doubly_linked_node *prev;
-	struct doubly_linked_node *next;
-};
-
 struct doubly_linked_list {
 	int length;
 	struct doubly_linked_node *head;
 	struct doubly_linked_node *tail;
 };
-
-/* Node operations */
-void doubly_linked_node_move_next(struct doubly_linked_node **node)
-{
-	assert(node != NULL && *node != NULL);
-	*node = (*node)->next;
-}
-
-void doubly_linked_node_move_prev(struct doubly_linked_node **node)
-{
-	assert(node != NULL && *node != NULL);
-	*node = (*node)->prev;
-}
-
-void *doubly_linked_node_get_data(struct doubly_linked_node *node)
-{
-	assert(node != NULL);
-	return node->data;
-}
 
 struct doubly_linked_list *doubly_linked_list_init()
 {
@@ -96,13 +72,6 @@ void *doubly_linked_list_get_nth(struct doubly_linked_list *list, int nth)
 	if (node == NULL)
 		return NULL;
 	return node->data;
-}
-
-static struct doubly_linked_node *build_doubly_linked_node(void *data)
-{
-	struct doubly_linked_node *node = calloc(1, sizeof(struct doubly_linked_node));
-	node->data = data;
-	return node;
 }
 
 void doubly_linked_list_prepend(struct doubly_linked_list *list, void *data)

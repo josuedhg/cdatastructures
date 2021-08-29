@@ -5,7 +5,6 @@
 #include <cmocka.h>
 
 #include "array_stack.h"
-#include "array_stack_tests.h"
 
 void array_stack(void **state)
 {
@@ -16,7 +15,7 @@ void array_stack(void **state)
 	assert_int_equal(array_stack_peek(stack), 4);
 	array_stack_push(stack, (void*)5);
 	assert_int_equal(array_stack_peek(stack), 5);
-	
+
 	assert_int_equal(array_stack_pop(stack), 5);
 	assert_int_equal(array_stack_pop(stack), 4);
 	assert_int_equal(array_stack_pop(stack), 3);
@@ -51,4 +50,16 @@ void array_stack_uninitialized(void **state)
 	expect_assert_failure(array_stack_push(stack, NULL));
 	expect_assert_failure(array_stack_peek(stack));
 	expect_assert_failure(array_stack_empty(stack));
+}
+
+int main()
+{
+	const struct CMUnitTest tests[] = {
+		// array_stack tests
+		cmocka_unit_test(array_stack),
+		cmocka_unit_test(array_stack_overflow),
+		cmocka_unit_test(array_stack_underflow),
+		cmocka_unit_test(array_stack_uninitialized),
+	};
+	return cmocka_run_group_tests(tests, NULL, NULL);
 }
