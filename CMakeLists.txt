@@ -15,3 +15,4 @@ add_subdirectory(samples)
 endif(${SAMPLES})
 
 message(STATUS "TESTS " ${TESTS})
+message(STATUS "SAMPLES " ${SAMPLES})

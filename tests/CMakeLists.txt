@@ -18,4 +18,5 @@ foreach (file ${c_tests})
 	add_test(NAME ${test_name}
 		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 		COMMAND ${test_name})
+	add_dependencies(check ${test_name})
 endforeach()
