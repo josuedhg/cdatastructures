@@ -24,7 +24,7 @@ jobs:
     - name: Install Dependencies
       run: sudo apt-get install libcmocka-dev gcovr lcov
     - name: Install gh-pages
-      run: sudo npm install -g gh-pages@2.0.1 --save-devi --prefix /usr/
+      run: sudo npm install -g gh-pages@3.0.0 --save-devi --prefix /usr/
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
