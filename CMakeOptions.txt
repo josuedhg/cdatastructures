@@ -1,2 +1,3 @@
 option(TESTS "Build unit testing" OFF)
 option(SAMPLES "Library Samples" OFF)
+option(COVERAGE "Code coverage report" OFF)
