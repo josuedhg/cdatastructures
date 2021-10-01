@@ -69,7 +69,7 @@ void btree_insert_test(void **state)
 	assert_int_equal(3, *((int *)root->left->right->data));
 	assert_int_equal(1, *((int *)root->left->left->data));
 	assert_int_equal(7, *((int *)root->right->data));
-	btree_delete_nodes(&root, NULL);
+	*state = root;
 }
 
 void btree_delete_nodes_test(void **state)
@@ -174,7 +174,7 @@ int main()
 	const struct CMUnitTest tests[] = {
 		// Binary Tree tests
 		cmocka_unit_test(btree_insert_null),
-		cmocka_unit_test(btree_insert_test),
+		cmocka_unit_test_teardown(btree_insert_test, teardown),
 		cmocka_unit_test(btree_inorder_traversal_null),
 		cmocka_unit_test_setup_teardown(btree_inorder_traversal_test,
 						setup, teardown),
