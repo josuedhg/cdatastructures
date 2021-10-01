@@ -33,7 +33,7 @@ static void delete_fn(void *data)
 		*((int *)data);
 }
 
-int setup(void **state)
+int setup_max(void **state)
 {
 	struct btree_node *root = NULL;
 	for (int i = 0; i < 5; i++) {
@@ -177,19 +177,19 @@ int main()
 		cmocka_unit_test_teardown(btree_insert_test, teardown),
 		cmocka_unit_test(btree_inorder_traversal_null),
 		cmocka_unit_test_setup_teardown(btree_inorder_traversal_test,
-						setup, teardown),
+						setup_max, teardown),
 		cmocka_unit_test(btree_preorder_traversal_null),
 		cmocka_unit_test_setup_teardown(btree_preorder_traversal_test,
-						setup, teardown),
+						setup_max, teardown),
 		cmocka_unit_test(btree_postorder_traversal_null),
 		cmocka_unit_test_setup_teardown(btree_postorder_traversal_test,
-						setup, teardown),
-		cmocka_unit_test_setup(btree_delete_nodes_test, setup),
-		cmocka_unit_test_setup(btree_delete_nodes_fn, setup),
+						setup_max, teardown),
+		cmocka_unit_test_setup(btree_delete_nodes_test, setup_max),
+		cmocka_unit_test_setup(btree_delete_nodes_fn, setup_max),
 		cmocka_unit_test(btree_search_null),
-		cmocka_unit_test_setup_teardown(btree_search_not_found, setup,
+		cmocka_unit_test_setup_teardown(btree_search_not_found, setup_max,
 						teardown),
-		cmocka_unit_test_setup_teardown(btree_search_found, setup,
+		cmocka_unit_test_setup_teardown(btree_search_found, setup_max,
 						teardown),
 	};
 	return cmocka_run_group_tests(tests, NULL, NULL);
